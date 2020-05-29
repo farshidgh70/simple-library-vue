@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-app id="inspire">
+    <v-app id="inspire" :style="$route.name === 'Login' ? {'background-image' : 'url(' + require('@/assets/bg-login.jpg') + ') !important' } : ''">
       <v-content>
         <v-container>
           <Navigation/>
@@ -17,3 +17,8 @@ export default {
   components: {Navigation}
 }
 </script>
+<style scoped>
+#inspire {
+  font-family: tahoma !important;
+}
+</style>

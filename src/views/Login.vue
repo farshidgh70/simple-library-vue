@@ -9,20 +9,13 @@
             cols="12"
           >
             <v-card class="elevation-12 ma-auto" max-width="400">
-              <v-toolbar
-                color="primary"
-                dark
-                flat
-              >
-                <v-toolbar-title>ورود</v-toolbar-title>
-              </v-toolbar>
               <v-card-text>
                 <v-form ref="login">
                     <v-text-field
                         v-model="email"
                         :rules="emailRules"
                         required
-                        filled
+                        outlined
                         clearable
                         label="آدرس ایمیل"
                         type="text"
@@ -37,15 +30,15 @@
                         @click:append="() => (e1 = !e1)"
                         :type="e1 ? 'text' : 'password'"
                         :rules="passwordRules"
-                        counter
+                        counter="20"
                         required
-                        filled
+                        outlined
                     ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn @click="login" color="primary">ورود</v-btn>
+                <v-btn block rounded @click="login" color="primary">ورود</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -96,6 +89,6 @@ export default {
 </script>
 <style scoped>
 .login-tm {
-    margin-top: 50px;
+    margin-top: 140px;
 }
 </style>
