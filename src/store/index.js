@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     token: localStorage.getItem('respina-token') || '',
     status: '',
+    user_logged_in: localStorage.getItem('user') || '',
     selected_categories: [],
     book_per_page: 8,
 
@@ -16,8 +17,8 @@ export default new Vuex.Store({
         email: "demo@respina.com",
         password: "@Respina1",
         full_name: {
-          fa: "شرکت رسبینا",
-          en: "Respina.Co"
+          fa: "ندا میراقایی",
+          en: "Neda Miraghaee"
         }
       }
     ],
@@ -352,6 +353,9 @@ export default new Vuex.Store({
       state.status = 'success'
       state.token = token
     },
+    AUTH_USER: (state, user) => {
+      state.user_logged_in = user
+    },
     AUTH_ERROR: (state) => {
       state.status = 'error'
     },
@@ -363,15 +367,19 @@ export default new Vuex.Store({
     AUTH_REQUEST: ({commit, state}, user) => {
       return new Promise((resolve, reject) => { 
         commit('AUTH_REQUEST')
-        if (state.User.filter((usr) => {return (usr.email === user.email && usr.password === user.password)}).length > 0) {
+        let rf = state.User.filter((usr) => {return (usr.email === user.email && usr.password === user.password)});
+        if (rf.length > 0) {
           const token = "sample_token_respina";
           localStorage.setItem('respina-token', token);
+          localStorage.setItem('user', rf[0].id);
           commit('AUTH_SUCCESS', token);
+          commit('AUTH_USER', rf[0].id);
           resolve(token);
         }
         else {
           commit('AUTH_ERROR');
           localStorage.removeItem('respina-token');
+          localStorage.removeItem('user');
           reject("err");
         }
       })
@@ -381,6 +389,7 @@ export default new Vuex.Store({
       return new Promise((resolve) => {
         commit('AUTH_SUCCESS', '');
         localStorage.removeItem('respina-token');
+        localStorage.removeItem('user');
         resolve();
       })
     }

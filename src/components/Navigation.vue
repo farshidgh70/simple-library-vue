@@ -18,7 +18,7 @@
                 <v-avatar>
                   <v-icon>person</v-icon>
                 </v-avatar>
-                <span>user name</span>
+                <span>{{user_logged_in.full_name.fa}}</span>
             </div>
             </template>
             <v-list>
@@ -31,7 +31,9 @@
 </template>
 
 <script>
+import {mixin} from '../mixin'
 export default {
+  mixins: [mixin],
   methods: {
     logout: function () {
       let vm = this;
