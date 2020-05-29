@@ -22,7 +22,10 @@ export default new Vuex.Store({
     ],
 
     Author: [
-      {id: 1, full_name: "عرفان ملکی"}
+      {id: 1, full_name: "عرفان ملکی"},
+      {id: 2, full_name: "استیو تولنز"},
+      {id: 3, full_name: "خاویر کرمنت"},
+      {id: 4, full_name: "الیف شافاک"}
     ],
 
     Category: [
@@ -64,7 +67,7 @@ export default new Vuex.Store({
       },
       {
         id: 2,
-        author_id: 1,
+        author_id: 2,
         category_id: 2,
         title: 'کتاب 2',
         translator: 'مترجم',
@@ -73,7 +76,7 @@ export default new Vuex.Store({
       },
       {
         id: 3,
-        author_id: 1,
+        author_id: 3,
         category_id: 3,
         title: 'کتاب 3',
         translator: 'مترجم',
@@ -82,7 +85,7 @@ export default new Vuex.Store({
       },
       {
         id: 4,
-        author_id: 1,
+        author_id: 4,
         category_id: 4,
         title: 'کتاب 4',
         translator: 'مترجم',
@@ -100,7 +103,7 @@ export default new Vuex.Store({
       },
       {
         id: 6,
-        author_id: 1,
+        author_id: 2,
         category_id: 6,
         title: 'کتاب 6',
         translator: 'مترجم',
@@ -109,7 +112,7 @@ export default new Vuex.Store({
       },
       {
         id: 7,
-        author_id: 1,
+        author_id: 3,
         category_id: 7,
         title: 'کتاب 7',
         translator: 'مترجم',
@@ -118,7 +121,7 @@ export default new Vuex.Store({
       },
       {
         id: 8,
-        author_id: 1,
+        author_id: 4,
         category_id: 8,
         title: 'کتاب 8',
         translator: 'مترجم',

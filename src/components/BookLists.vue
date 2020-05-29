@@ -4,7 +4,7 @@
             <v-col 
                 v-for="(book, book_i) in $store.getters.bookLists"
                 :key="'book'+book_i"
-                md="3" sm="2" cols="12" 
+                md="3" sm="6" cols="12" 
                 class="book"
             >
                 <v-card class="book-card" tile elevation="20">
@@ -42,5 +42,10 @@ export default {
             color: #666;
         }
     }
+}
+@media only screen and (max-width: 600px) {
+  .book {
+      padding: 0 60px;
+  }
 }
 </style>

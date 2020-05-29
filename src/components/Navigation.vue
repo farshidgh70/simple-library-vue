@@ -4,8 +4,6 @@
         color="white"
         elevation="0"
     >
-        <v-app-bar-nav-icon class="app-bar-nav"></v-app-bar-nav-icon>
-
         <v-toolbar-title class="nav-toolbar-title">
             <v-avatar>
             <img alt="respina logo" src="@/assets/logo.png">
