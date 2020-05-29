@@ -7,7 +7,7 @@
                 md="3" sm="6" cols="12" 
                 class="book"
             >
-                <v-card class="book-card" tile elevation="20">
+                <v-card class="book-card" tile elevation="20" @click="show_detail_book(book)">
                     <img :src="require('@/assets/'+book.image)"/>
                 </v-card>
                 <figcaption>
@@ -26,6 +26,35 @@
                 ></v-pagination>
             </v-col>
         </v-row>
+
+        <!-- dialog detail book -->
+        <v-dialog v-model="dialog_detail_book" width="700px">
+            <v-card class="mid-description-card">
+                <v-btn @click="dialog_detail_book = false" icon class="mid-description-close-btn"><v-icon>clear</v-icon></v-btn>
+                <v-card-text v-if="selected_book !== null">
+                    <v-row>
+                        <v-col md="4" sm="6" cols="12">
+                            <img :src="require('@/assets/'+selected_book.image)"/>
+                        </v-col>
+                        <v-col md="8" sm="6" cols="12">
+                            <div class="mid-description">
+                                <strong class="m-book-title">{{selected_book.title}} | {{author_name(selected_book.author_id)}}</strong>
+                                <div class="m-book-author">
+                                    <span>نویسنده: </span>
+                                    <span>{{author_name(selected_book.author_id)}}</span>
+                                </div>
+                                <div class="m-book-translator">
+                                    <span>مترجم: </span>
+                                    <span>{{selected_book.translator}}</span>
+                                </div>
+                                <div class="mid-desc-tt">بخشی از {{selected_book.title}}</div>
+                                <p class="m-summary">{{selected_book.summary}}</p>
+                            </div>
+                        </v-col>
+                    </v-row>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
     </div>
 </template>
 <script>
@@ -34,7 +63,8 @@ export default {
     mixins: [mixin],
     data: ()=>({
         page: 1,
-        
+        selected_book: null,
+        dialog_detail_book: false,
     }),
     computed: {
         paginated_lists: function () {
@@ -50,11 +80,37 @@ export default {
         }
     },
     methods: {
-        
+        show_detail_book: function (book) {
+            this.selected_book = book;
+            this.dialog_detail_book = true;
+        }
     }
 }
 </script>
 <style lang="scss" scoped>
+.mid-description-card {
+    position: relative;
+}
+.mid-description-close-btn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+.mid-description {
+    .m-book-author {
+        margin-top: 15px;
+        padding-right: 12px;
+    }
+    .m-book-translator {
+        padding-right: 12px;
+    }
+    .mid-desc-tt {
+        margin-top: 15px;
+    }
+    .m-summary {
+        margin-top: 15px;
+    }
+}
 .book {
     .book-card {
         height: 300px;
