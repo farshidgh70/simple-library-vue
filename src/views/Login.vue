@@ -78,15 +78,17 @@ export default {
     methods: {
         login: function () {
             if (this.$refs.login.validate()) {
-                this.$store.dispatch('AUTH_REQUEST', { email: this.email, password: this.password }).then(() => {
+                this.$store.dispatch('AUTH_REQUEST', { email: this.email, password: this.password })
+                .then(() => {
                     this.$router.push('/')
+                }, () => {
+                  this.$swal.fire({
+                      icon: 'error',
+                      text: 'لطفا ایمیل و رمز عبور را به درستی وارد نمایید!',
+                      showConfirmButton: false,
+                      timer: 2000
+                  });
                 })
-            }
-            else {
-                this.$swal.fire({
-                    icon: 'error',
-                    text: 'لطفا ایمیل و رمز عبور را به درستی وارد نمایید!',
-                });
             }
         }
     }

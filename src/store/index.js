@@ -7,6 +7,15 @@ export default new Vuex.Store({
   state: {
     token: localStorage.getItem('respina-token') || '',
     status: '',
+
+    Users: [
+      {
+        id: 1,
+        email: "demo@respina.com",
+        password: "@Respina1",
+        full_name: "Respina.Co"
+      }
+    ],
   },
   getters: {
     isAuthenticated: state => !!state.token,
@@ -25,10 +34,10 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    AUTH_REQUEST: ({commit}, user) => {
+    AUTH_REQUEST: ({commit, state}, user) => {
       return new Promise((resolve, reject) => { 
         commit('AUTH_REQUEST')
-        if (user.email === "demo@respina.com" && user.password === "@Respina1") {
+        if (state.Users.filter((usr) => {return (usr.email === user.email && usr.password === user.password)}).length > 0) {
           const token = "sample_token_respina";
           localStorage.setItem('respina-token', token);
           commit('AUTH_SUCCESS', token);
