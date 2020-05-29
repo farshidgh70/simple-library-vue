@@ -17,7 +17,7 @@
                 <v-toolbar-title>ورود</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
-                <v-form>
+                <v-form ref="login">
                     <v-text-field
                         v-model="email"
                         :rules="emailRules"
@@ -45,7 +45,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary">ورود</v-btn>
+                <v-btn @click="login" color="primary">ورود</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -77,7 +77,17 @@ export default {
     }),
     methods: {
         login: function () {
-            //
+            if (this.$refs.login.validate()) {
+                this.$store.dispatch('AUTH_REQUEST', { email: this.email, password: this.password }).then(() => {
+                    this.$router.push('/')
+                })
+            }
+            else {
+                this.$swal.fire({
+                    icon: 'error',
+                    text: 'لطفا ایمیل و رمز عبور را به درستی وارد نمایید!',
+                });
+            }
         }
     }
 }
