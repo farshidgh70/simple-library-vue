@@ -8,6 +8,7 @@ export default new Vuex.Store({
     token: localStorage.getItem('respina-token') || '',
     status: '',
     selected_categories: [],
+    book_per_page: 8,
 
     User: [
       {
@@ -61,7 +62,7 @@ export default new Vuex.Store({
         author_id: 1,
         category_id: 1,
         title: 'کتاب 1',
-        translator: 'مترجم',
+        translator: 'ارسلان فصیحی',
         summary: '',
         image: 'book1.png'
       },
@@ -70,7 +71,7 @@ export default new Vuex.Store({
         author_id: 2,
         category_id: 2,
         title: 'کتاب 2',
-        translator: 'مترجم',
+        translator: 'ارسلان فصیحی 2',
         summary: '',
         image: 'book2.png'
       },
@@ -79,7 +80,7 @@ export default new Vuex.Store({
         author_id: 3,
         category_id: 3,
         title: 'کتاب 3',
-        translator: 'مترجم',
+        translator: 'ارسلان فصیحی 3',
         summary: '',
         image: 'book3.png'
       },
@@ -88,7 +89,7 @@ export default new Vuex.Store({
         author_id: 4,
         category_id: 4,
         title: 'کتاب 4',
-        translator: 'مترجم',
+        translator: 'ارسلان فصیحی 4',
         summary: '',
         image: 'book4.png'
       },
@@ -97,7 +98,7 @@ export default new Vuex.Store({
         author_id: 1,
         category_id: 5,
         title: 'کتاب 5',
-        translator: 'مترجم',
+        translator: 'ارسلان فصیحی 5',
         summary: '',
         image: 'book1.png'
       },
@@ -106,7 +107,7 @@ export default new Vuex.Store({
         author_id: 2,
         category_id: 6,
         title: 'کتاب 6',
-        translator: 'مترجم',
+        translator: 'ارسلان فصیحی 6',
         summary: '',
         image: 'book2.png'
       },
@@ -115,7 +116,7 @@ export default new Vuex.Store({
         author_id: 3,
         category_id: 7,
         title: 'کتاب 7',
-        translator: 'مترجم',
+        translator: 'ارسلان فصیحی 7',
         summary: '',
         image: 'book3.png'
       },
@@ -124,10 +125,211 @@ export default new Vuex.Store({
         author_id: 4,
         category_id: 8,
         title: 'کتاب 8',
-        translator: 'مترجم',
+        translator: 'ارسلان فصیحی 8',
         summary: '',
         image: 'book4.png'
-      }
+      },
+
+      {
+        id: 9,
+        author_id: 1,
+        category_id: 9,
+        title: 'کتاب 9',
+        translator: 'ارسلان فصیحی',
+        summary: '',
+        image: 'book1.png'
+      },
+      {
+        id: 10,
+        author_id: 2,
+        category_id: 10,
+        title: 'کتاب 10',
+        translator: 'ارسلان فصیحی 2',
+        summary: '',
+        image: 'book2.png'
+      },
+      {
+        id: 11,
+        author_id: 3,
+        category_id: 11,
+        title: 'کتاب 11',
+        translator: 'ارسلان فصیحی 3',
+        summary: '',
+        image: 'book3.png'
+      },
+      {
+        id: 12,
+        author_id: 4,
+        category_id: 12,
+        title: 'کتاب 12',
+        translator: 'ارسلان فصیحی 4',
+        summary: '',
+        image: 'book4.png'
+      },
+      {
+        id: 13,
+        author_id: 1,
+        category_id: 13,
+        title: 'کتاب 13',
+        translator: 'ارسلان فصیحی 5',
+        summary: '',
+        image: 'book1.png'
+      },
+      {
+        id: 14,
+        author_id: 2,
+        category_id: 14,
+        title: 'کتاب 14',
+        translator: 'ارسلان فصیحی 6',
+        summary: '',
+        image: 'book2.png'
+      },
+      {
+        id: 15,
+        author_id: 3,
+        category_id: 15,
+        title: 'کتاب 15',
+        translator: 'ارسلان فصیحی 7',
+        summary: '',
+        image: 'book3.png'
+      },
+      {
+        id: 16,
+        author_id: 4,
+        category_id: 16,
+        title: 'کتاب 16',
+        translator: 'ارسلان فصیحی 8',
+        summary: '',
+        image: 'book4.png'
+      },
+
+      {
+        id: 17,
+        author_id: 1,
+        category_id: 1,
+        title: 'کتاب 17',
+        translator: 'ارسلان فصیحی',
+        summary: '',
+        image: 'book1.png'
+      },
+      {
+        id: 18,
+        author_id: 2,
+        category_id: 2,
+        title: 'کتاب 18',
+        translator: 'ارسلان فصیحی 2',
+        summary: '',
+        image: 'book2.png'
+      },
+      {
+        id: 19,
+        author_id: 3,
+        category_id: 3,
+        title: 'کتاب 19',
+        translator: 'ارسلان فصیحی 3',
+        summary: '',
+        image: 'book3.png'
+      },
+      {
+        id: 20,
+        author_id: 4,
+        category_id: 4,
+        title: 'کتاب 20',
+        translator: 'ارسلان فصیحی 4',
+        summary: '',
+        image: 'book4.png'
+      },
+      {
+        id: 21,
+        author_id: 1,
+        category_id: 5,
+        title: 'کتاب 21',
+        translator: 'ارسلان فصیحی 5',
+        summary: '',
+        image: 'book1.png'
+      },
+      {
+        id: 22,
+        author_id: 2,
+        category_id: 6,
+        title: 'کتاب 22',
+        translator: 'ارسلان فصیحی 6',
+        summary: '',
+        image: 'book2.png'
+      },
+      {
+        id: 23,
+        author_id: 3,
+        category_id: 7,
+        title: 'کتاب 23',
+        translator: 'ارسلان فصیحی 7',
+        summary: '',
+        image: 'book3.png'
+      },
+      {
+        id: 24,
+        author_id: 4,
+        category_id: 8,
+        title: 'کتاب 24',
+        translator: 'ارسلان فصیحی 8',
+        summary: '',
+        image: 'book4.png'
+      },
+
+      {
+        id: 25,
+        author_id: 1,
+        category_id: 1,
+        title: 'کتاب 25',
+        translator: 'ارسلان فصیحی',
+        summary: '',
+        image: 'book1.png'
+      },
+      {
+        id: 26,
+        author_id: 2,
+        category_id: 3,
+        title: 'کتاب 26',
+        translator: 'ارسلان فصیحی 2',
+        summary: '',
+        image: 'book2.png'
+      },
+      {
+        id: 27,
+        author_id: 3,
+        category_id: 5,
+        title: 'کتاب 27',
+        translator: 'ارسلان فصیحی 3',
+        summary: '',
+        image: 'book3.png'
+      },
+      {
+        id: 28,
+        author_id: 4,
+        category_id: 7,
+        title: 'کتاب 28',
+        translator: 'ارسلان فصیحی 4',
+        summary: '',
+        image: 'book4.png'
+      },
+      {
+        id: 29,
+        author_id: 1,
+        category_id: 9,
+        title: 'کتاب 29',
+        translator: 'ارسلان فصیحی 5',
+        summary: '',
+        image: 'book1.png'
+      },
+      {
+        id: 30,
+        author_id: 2,
+        category_id: 11,
+        title: 'کتاب 30',
+        translator: 'ارسلان فصیحی 6',
+        summary: '',
+        image: 'book2.png'
+      },
     ],
   },
   getters: {
@@ -136,9 +338,10 @@ export default new Vuex.Store({
 
     bookLists: state => {
       if (state.selected_categories.length === 0) {
-        return state.Book;
+        //return state.Book;
+        return state.Book.filter((book, index) => {return index < 30}); // max number books 30
       }
-      return state.Book.filter(book => {return state.selected_categories.includes(book.id)});
+      return state.Book.filter(book => {return state.selected_categories.includes(book.category_id)});
     }
   },
   mutations: {
