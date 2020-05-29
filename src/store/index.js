@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     token: localStorage.getItem('respina-token') || '',
     status: '',
+    selected_categories: [],
 
     User: [
       {
@@ -129,6 +130,13 @@ export default new Vuex.Store({
   getters: {
     isAuthenticated: state => !!state.token,
     authStatus: state => state.status,
+
+    bookLists: state => {
+      if (state.selected_categories.length === 0) {
+        return state.Book;
+      }
+      return state.Book.filter(book => {return state.selected_categories.includes(book.id)});
+    }
   },
   mutations: {
     AUTH_REQUEST: (state) => {
@@ -141,6 +149,9 @@ export default new Vuex.Store({
     AUTH_ERROR: (state) => {
       state.status = 'error'
     },
+    UPDATE_SELECTED_CATEGORY: (state, payload) => {
+      state.selected_categories = payload;
+    }
   },
   actions: {
     AUTH_REQUEST: ({commit, state}, user) => {
