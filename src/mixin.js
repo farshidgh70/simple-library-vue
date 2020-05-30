@@ -6,11 +6,4 @@ export const mixin = {
             return result.length > 0 ? result[0].full_name : 'نامشخص';
         },
     },
-    computed: {
-        user_logged_in : function () {
-            let id = localStorage.getItem('user');
-            let result = this.$store.state.User.filter(user => {return parseInt(user.id) === parseInt(id)});
-            return result.length > 0 ? result[0] : 'نامشخص';
-        },
-    }
-}
+};

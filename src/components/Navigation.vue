@@ -18,7 +18,7 @@
                 <v-avatar>
                   <v-icon>person</v-icon>
                 </v-avatar>
-                <span>{{user_logged_in.full_name.fa}}</span>
+                <span v-if="user_logged_in !== null">{{user_logged_in.full_name.fa}}</span>
             </div>
             </template>
             <v-list>
@@ -31,9 +31,16 @@
 </template>
 
 <script>
+import axios from 'axios'
 import {mixin} from '../mixin'
 export default {
   mixins: [mixin],
+  data: ()=>({
+    user_logged_in: null
+  }),
+  mounted() {
+    this.fetch_user();
+  },
   methods: {
     logout: function () {
       let vm = this;
@@ -41,8 +48,21 @@ export default {
       .then(() => {
         vm.$router.push('/login')
       });
-    }
-  }
+    },
+    fetch_user : async function () {
+        let id = localStorage.getItem('user');
+        this.user_logged_in = await axios.get('/Users.json')
+          .then(res=>{
+              let rf = res.data.filter((usr) => {return (parseInt(usr.id) === parseInt(id))});
+              if (rf.length > 0) {
+                  return rf[0];
+              }
+              else {
+                  return "user not find";
+              }
+          });
+    },
+  },
 }
 </script>
 <style scoped>
