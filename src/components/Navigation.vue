@@ -39,7 +39,7 @@ export default {
     user_logged_in: null
   }),
   mounted() {
-    this.fetch_user();
+    this.fetch_user(this.$store.state.user_logged_in);
   },
   methods: {
     logout: function () {
@@ -49,8 +49,8 @@ export default {
         vm.$router.push('/login')
       });
     },
-    fetch_user : async function () {
-        let id = localStorage.getItem('user');
+    fetch_user : async function (id) {
+        if (id === null || this.user_logged_in !== null) {return;}
         this.user_logged_in = await axios.get('/Users.json')
           .then(res=>{
               let rf = res.data.filter((usr) => {return (parseInt(usr.id) === parseInt(id))});
@@ -58,11 +58,16 @@ export default {
                   return rf[0];
               }
               else {
-                  return "user not find";
+                  return null;
               }
           });
     },
   },
+  watch: {
+    '$store.state.user_logged_in': function (val) {
+      this.fetch_user(val);
+    }
+  }
 }
 </script>
 <style scoped>
